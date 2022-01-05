@@ -1,0 +1,13 @@
+@import "../settings/variables";
+
+body {
+  background: $Gallery;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  border:none;
+  width: 100%;
+}

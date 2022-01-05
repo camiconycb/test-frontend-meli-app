@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 
 function App() {
   return (
@@ -24,3 +23,6 @@ function App() {
 }
 
 export default App;
+// console.log(`Current NODE_ENV is ${process.env.NODE_ENV}`)
+
+// console.log(`Sample key is ${process.env.SAMPLE_KEY}`)
