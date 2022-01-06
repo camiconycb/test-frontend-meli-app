@@ -1,4 +1,6 @@
 import { FunctionComponent, useEffect, useState } from 'react';
+import '../styles.scss';
+
 interface ILogoProps {
 
 }
@@ -9,7 +11,7 @@ const Logo: FunctionComponent<ILogoProps> = props => {
 
 
   return (
-    <h1>Logo</h1>
+    <img className="header__logo" src="mercado-libre-logo.webp" alt="logo"/>
   );
   
 }

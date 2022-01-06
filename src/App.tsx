@@ -5,17 +5,18 @@ import Details from './features/product/application/components/Details';
 import Search from './features/search/application/components/Search';
 
 function App() {
+
   return (
     <div>
-      <Router>
-        <header>
-          <Link to="/">Meli</Link>
-        </header>
-        <Switch>
-          <Route path='/items/:id' element={<Details/>}/>
-          <Route path='/' element={<Search/>}/>
-        </Switch>
-      </Router>
+
+        <Router>
+          <Switch>
+            <Route path='/' element={ <Search/>}/>
+            <Route path='/items/:id' element={<Details/>}/>
+          </Switch>
+        </Router>
+
+     
     </div>
   );
 }

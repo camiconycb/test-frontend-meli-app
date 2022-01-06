@@ -1,36 +1,22 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import Logo from '../atoms/Logo';
 import SearchForm from '../molecules/SearchForm';
-import styled from "styled-components";
+import '../styles.scss';
 
 interface IHeaderProps {
-
 }
-
 const Header: FunctionComponent<IHeaderProps> = props => {
   // useEffect(() => {
   // },[])
 
-
-
   return (
-    <header>
-      <Wrapper>
-        <Logo></Logo>
-        <SearchForm></SearchForm>
-      </Wrapper>
-      
+    <header className='header'>
+      <Logo></Logo>
+      <SearchForm></SearchForm>
     </header>
-    
-  );
-  
+
+  )
 }
-const Wrapper = styled(Header)`
-  display: grid;
-  grid-template-areas: 'header-report-detail' 'description-report-detail';
-  grid-template-columns
-: 0.1fr 0.1fr;
-  max-width: var(--max-width);
-`;
+
 export default Header;
 
