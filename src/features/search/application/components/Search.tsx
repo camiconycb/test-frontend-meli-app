@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect, useState } from 'react';
+// import { SearchProvider } from '../context/searchProvider';
 import Header from '../ui/organisms/Header';
 interface ISearchProps {
 
