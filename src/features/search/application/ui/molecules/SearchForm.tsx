@@ -1,4 +1,6 @@
+import { AxiosResponse } from 'axios';
 import { FunctionComponent, useContext, useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import container from '../../../../../injection_container';
 import { IProductRepository } from '../../../domain/repositories/productRepository';
@@ -20,6 +22,8 @@ interface ISearchBoxProps {
 
 const SearchForm: FunctionComponent<ISearchBoxProps> = props => {
   // useEffect(() => {
+    
+    
   // },[])
 
   const [productRepository] = useState(container.get<IProductRepository>('productRepository'));
@@ -30,9 +34,10 @@ const SearchForm: FunctionComponent<ISearchBoxProps> = props => {
   async function search() {
     let params: ParamsSearchProduct = new ParamsSearchProduct(queryValue);
     // updateLoading(true)
-    let resp = await new SearchProductUseCase(productRepository).call(params);
-    setResult(resp);
-    console.log(resp);
+    let resp: any = await new SearchProductUseCase(productRepository).call(params);
+    console.log(resp)
+    setResult(resp['data']['response']);
+    // console.log(resp);
     // setTimeout(() => {
     //   if(isMounted) {
     //     updateLoading(false)

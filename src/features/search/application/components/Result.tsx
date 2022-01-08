@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { ResultSearchValue } from '../state/searchProvider';
+import { ItemEntity } from '../../domain/entities/itemEntity';
+import { CategoriesValue, ItemsValue, ResultSearchValue } from '../state/searchProvider';
 interface IResultProps {
 
 }
@@ -9,10 +10,25 @@ const Result: FunctionComponent<IResultProps> = props => {
   // useEffect(() => {
   // },[])
 
-  const resultSearchValue = useRecoilValue(ResultSearchValue);
+  const itemsValue: ItemEntity[] = useRecoilValue(ItemsValue);
+  const categoriesValue: string = useRecoilValue(CategoriesValue);
 
   return (
-    <h1>Result</h1>
+    <div>
+      <h2>{categoriesValue}</h2>
+      {itemsValue.map((item) => {
+       return (
+        <div>
+          <img src={item.picture} alt={item.id + "thumbnail"}></img>
+          <h1>{item.title} </h1>
+          <h2>{item.price.currency}</h2>
+          <h2>{item.price.amount}</h2>
+        </div>
+
+       )
+        
+      })}
+    </div>
   );
   
 }
