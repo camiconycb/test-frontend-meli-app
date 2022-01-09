@@ -1,0 +1,66 @@
+
+@import '../../../../styles/settings/variables.scss';
+.main{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main_container{
+  background-color: white;
+  width: 50vw;
+  height: 80vh;
+  padding: 2rem;
+  overflow-y: auto;
+}
+.container__breadcrumb{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: $_fs-12;
+  color: #9D9D9D
+}
+
+.container__listItems li{
+  display: grid;
+  grid-template-areas: 'picturegrid pricegrid currencygrid'
+                       'picturegrid titlegrid currencygrid';
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  gap: 0;
+  align-items: center;
+  padding: 1rem;
+}
+
+.listItems_picture{
+  width: 8vw;
+  height: 15vh;
+  background-color: #F0F0F0;
+  border-radius: 2%;
+  grid-area: picturegrid;
+}
+.picture{
+  padding: 0.5em;
+  width: 100%;
+  height: 100%;
+}
+
+.price{
+  grid-area: pricegrid;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  line-height: 100%;
+  font-size: $fs-title-s;
+}
+
+.title{
+  grid-area: titlegrid;
+  height: 100%;
+  padding-left: 1rem;
+  font-size: $_fs-19;
+  width: 23em;
+  line-height: 1.5em;
+}
+
+.currency{
+  grid-area: currencygrid;
+}
