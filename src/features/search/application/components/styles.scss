@@ -18,7 +18,8 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: $_fs-12;
-  color: #9D9D9D
+  color: #9D9D9D;
+  line-height: 1.5em;
 }
 
 .container__listItems li{
@@ -64,3 +65,39 @@
 .currency{
   grid-area: currencygrid;
 }
+
+@media (max-width: 600px) {
+  .container__listItems li{
+    grid-template-areas: 'titlegrid titlegrid'
+                          'picturegrid picturegrid'
+                          'pricegrid currencygrid';
+    grid-template-columns: 0.1fr 0.1fr;
+    grid-template-rows: 0.1fr 2fr 0.1fr;
+    gap: 0;
+    justify-content: center;
+  }
+  .title{
+    font-size: $_fs-12;
+    padding-left: 0;
+    padding-bottom: 1rem;
+  }
+  .listItems_picture{
+    width: 30vw;
+    height: 17vh;
+  }
+  .price{
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  .currency{
+    padding-top: 1rem;
+    padding-left: 1rem;
+  }
+  
+  .container__breadcrumb{
+    text-overflow: unset;
+    width: 50vw;
+  }
+
+}
+ 
