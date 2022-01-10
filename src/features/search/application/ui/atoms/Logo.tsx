@@ -13,7 +13,7 @@ const Logo: FunctionComponent<ILogoProps> = props => {
 
   return (
     <Link to= "/" >
-      <img className="header__logo" src="mercado-libre-logo.webp" alt="logo"/>
+      <img className="header__logo" src="/mercado-libre-logo.webp" alt="logo"/>
     </Link>
   );
   
