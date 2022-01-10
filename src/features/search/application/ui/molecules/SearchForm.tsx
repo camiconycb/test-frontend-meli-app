@@ -32,16 +32,7 @@ const SearchForm: FunctionComponent<ISearchBoxProps> = props => {
  
     navigate(`/items?search=:${queryValue}`);
    
-    // console.log(resp);
-    // setTimeout(() => {
-    //   if(isMounted) {
-    //     updateLoading(false)
-    //   }
-    // }, 800)
     
-    // if(!resp.get('success')) {
-    //   props.showError(resp.get('errorMessage'))
-    // }
   }
 
   return (
