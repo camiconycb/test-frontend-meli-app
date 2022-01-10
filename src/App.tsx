@@ -5,6 +5,8 @@ import Details from './features/product/application/components/Details';
 import Search from './features/search/application/components/Search';
 import {
   RecoilRoot } from 'recoil';
+import Result from './features/search/application/components/Result';
+import NoMatchPage from './features/noMatchPage';
 
 function App() {
   useEffect(() =>{
@@ -17,8 +19,15 @@ function App() {
         <Router>
           <RecoilRoot>
             <Switch>
-              <Route path='/' element={ <Search/>}/>
-              <Route path='/items/:id' element={<Details/>}/>
+              <Route  path='/'  element={ <Search/>}/>
+              <Route path='/items' element={ 
+                <div className='main'>
+                  <Search/>
+                  <Result/> 
+                </div>
+              }/>
+              <Route path= "*"element={<NoMatchPage/>} />
+              {/* <Route path='/items/:id' element={<Details/>}/> */}
             </Switch>
           </RecoilRoot>
         </Router>

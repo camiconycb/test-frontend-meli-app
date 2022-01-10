@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { FunctionComponent, useContext, useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import container from '../../../../../injection_container';
 import { IProductRepository } from '../../../domain/repositories/productRepository';
@@ -21,22 +21,17 @@ interface ISearchBoxProps {
 }
 
 const SearchForm: FunctionComponent<ISearchBoxProps> = props => {
-  // useEffect(() => {
-    
-    
-  // },[])
+  useEffect(() => {
+    console.log('render search form');
 
-  const [productRepository] = useState(container.get<IProductRepository>('productRepository'));
+  },[])
   const queryValue = useRecoilValue(QueryValue);
+  let navigate = useNavigate();
   
-  const [result, setResult] = useRecoilState(resultSearchState);
-
-  async function search() {
-    let params: ParamsSearchProduct = new ParamsSearchProduct(queryValue);
-    // updateLoading(true)
-    let resp: any = await new SearchProductUseCase(productRepository).call(params);
-    console.log(resp)
-    setResult(resp['data']['response']);
+  function search() {
+ 
+    navigate(`/items?search=:${queryValue}`);
+   
     // console.log(resp);
     // setTimeout(() => {
     //   if(isMounted) {
@@ -56,7 +51,9 @@ const SearchForm: FunctionComponent<ISearchBoxProps> = props => {
         onSubmit={(e) => {
           e.preventDefault();
           search();
-        }}>
+        }}
+        
+        >
 
         <Input></Input>
         <Button></Button>
@@ -71,3 +68,4 @@ const SearchForm: FunctionComponent<ISearchBoxProps> = props => {
 
 
 export default SearchForm;
+

@@ -9,8 +9,10 @@ interface IInputProps {
 }
 
 const Input: FunctionComponent<IInputProps> = props => {
-  // useEffect(() => {
-  // },[])
+  useEffect(() => {
+    console.log('render input');
+
+  },[])
 
   const [query, setQuery] = useRecoilState(queryState);
   return (

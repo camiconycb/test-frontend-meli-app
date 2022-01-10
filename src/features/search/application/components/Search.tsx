@@ -15,13 +15,12 @@ const Search: FunctionComponent<ISearchProps> = props => {
 
   return (
     <div>
-      <div className='main'>
-        <Header />
-        <Result/>
-      </div>
+  
+      <Header />
+    
     </div>
   );
-  
+
 }
 export default Search;
 

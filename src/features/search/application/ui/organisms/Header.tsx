@@ -6,8 +6,10 @@ import '../styles.scss';
 interface IHeaderProps {
 }
 const Header: FunctionComponent<IHeaderProps> = props => {
-  // useEffect(() => {
-  // },[])
+  useEffect(() => {
+    console.log('render header');
+    
+  },[])
 
   return (
     <header className='header'>
