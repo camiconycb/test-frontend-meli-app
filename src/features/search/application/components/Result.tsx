@@ -69,7 +69,7 @@ const Result: FunctionComponent<IResultProps> = props => {
         
        return <>
          <Helmet>
-          <title>{categoriesValue}</title>
+          <title>{categoriesValue}  Mercado libre</title>
           <meta name='description' content={`results for ${query}` }></meta>
          </Helmet>
          <Link to ={`/items/${item.id}`} className='link'>
