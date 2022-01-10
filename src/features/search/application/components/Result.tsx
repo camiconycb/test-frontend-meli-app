@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import container from '../../../../injection_container';
 import { ItemEntity } from '../../domain/entities/itemEntity';
@@ -18,6 +18,7 @@ const Result: FunctionComponent<IResultProps> = props => {
  
   const [result, setResult] = useRecoilState(resultSearchState);
   const [productRepository] = useState(container.get<IProductRepository>('productRepository'));
+  const [loading, setLoading] = useState(true);
   const search = async() => {
     try {
 
@@ -28,7 +29,7 @@ const Result: FunctionComponent<IResultProps> = props => {
         let resp:any = await new SearchProductUseCase(productRepository).call(params);
         
         setResult(resp['data']['response']);
-
+        setLoading(false)
       }
       // Even more logic goes here
     } catch (err) {
@@ -46,7 +47,8 @@ const Result: FunctionComponent<IResultProps> = props => {
   console.log(itemsValue);
   
   if(query == null) return <h3 className='message'>Ingrese parametro de busqueda</h3>
-  if (itemsValue.length == 0) return <h3  className='message'>No se encontraron resultados</h3>
+  if (!loading && itemsValue.length == 0) return <h3  className='message'>No se encontraron resultados</h3>
+  if(loading) return <span className='message'>Cargando...</span>
   return (
   
   <div>
@@ -54,15 +56,20 @@ const Result: FunctionComponent<IResultProps> = props => {
     <div className='main_container'>
       <ul  className='container__listItems'>
       {itemsValue.map((item) => {
+        console.log(item.id);
+        
        return (
-        <li key={item.id}>
-          <div className='listItems_picture'>
-            <img src={item.picture} alt={item.id + "thumbnail"} className='picture'></img>
-          </div>
-          <span className='price'> ${item.price.amount}</span>
-          <span className='title'>{item.title} </span>
-          <span className='currency'>{item.price.currency}</span>
-        </li>
+         <Link to ={`/items/${item.id}`} className='link'>
+          <li key={item.id}>
+            <div className='listItems_picture'>
+              <img src={item.picture} alt={item.id + "thumbnail"} className='picture'></img>
+            </div>
+            <span className='price'> ${item.price.amount}</span>
+            <span className='title'>{item.title} </span>
+            <span className='currency'>{item.price.currency}</span>
+          </li>
+
+         </Link>
        )
         
       })}

@@ -7,8 +7,11 @@ import axios from "axios";
 @injectable()
 export class ProductRepositoryImpl implements IProductRepository{
 
-  getProductDetails(id: string): ItemEntity {
-    throw new Error("Method not implemented.");
+  getProductDetails(id: string): {} {
+    const baseURL = `http://localhost:4000/api/items/${id}`;
+    const response = axios.get(baseURL);
+    
+    return response;
   }
 
   searchProduct(query: string): {}{

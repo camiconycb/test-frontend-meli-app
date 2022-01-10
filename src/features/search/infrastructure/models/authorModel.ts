@@ -19,9 +19,3 @@ export class AuthorModel extends AuthorEntity{
  
 }
 
-export const fromJson = ( parsedJson: any) => {
-  return new AuthorModel(
-    parsedJson.name,
-    parsedJson.lastName
-  )
-}

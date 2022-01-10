@@ -7,6 +7,8 @@ export class ItemEntity{
   picture: string;
   condition: string;
   free_shipping: Boolean;
+  sold_quantity: number;
+  description: string;
 
   constructor(
     id: string,
@@ -14,7 +16,9 @@ export class ItemEntity{
     price: PriceEntity,
     picture: string,
     condition: string,
-    free_shipping: Boolean
+    free_shipping: Boolean,
+    sold_quantity: number,
+    description: string
   ){
     this.id = id;
     this.price = price;
@@ -22,6 +26,8 @@ export class ItemEntity{
     this.picture = picture;
     this.condition = condition;
     this.free_shipping = free_shipping;
+    this.sold_quantity = sold_quantity;
+    this.description = description;
 
   }
 

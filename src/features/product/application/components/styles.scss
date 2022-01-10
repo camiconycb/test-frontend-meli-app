@@ -1,0 +1,98 @@
+@import '../../../../styles/settings/variables.scss';
+.wrapper_detail{
+  display: grid;
+  grid-template-areas: 'img_grid          sold_quantity_grid   sold_quantity_grid sold_quantity_grid'
+                       'img_grid          title_grid       title_grid         title_grid'
+                       'img_grid          amount_grid      amount_grid        amount_grid'
+                       'img_grid          button_grid      button_grid        button_grid'
+                       'title2_grid       title2_grid      title2_grid        title2_grid'
+                       'description_grid  description_grid description_grid   description_grid'; 
+
+
+  // gap: 0.5em;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns:1fr 0.1;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 1fr;
+}
+.detail__wrapper_image{
+  grid-area: img_grid;
+  width: 25vw;
+  background-color: #F0F0F0;
+  border-radius: 2%;
+  margin-bottom: 3rem;
+}
+.detail__img{
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+
+}
+
+
+.detail__sold_quantity{
+  font-size: $_fs-12;
+  grid-area: sold_quantity_grid;
+  color: $FrenchGray;
+}
+
+.detail__title{
+  grid-area: title_grid;
+  font-weight: bold;
+  font-size: $fs-lead;
+  text-overflow: ellipsis;
+}
+.wrapper__amount{
+  margin-top: 1em;
+  grid-area: amount_grid;
+  display: flex;
+}
+.detail__amount{
+  font-size: $_fs-19;
+
+}
+.detail__decimals{
+  font-size: $_fs-12;
+  grid-area: decimals_grid;
+}
+.detail__button{
+  grid-area: button_grid;
+  background-color: #4070FF;
+  color: white;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: none;
+  cursor: pointer;
+  
+
+}
+.detail__title2{
+  grid-area: title2_grid;
+  font-size: $fs-lead;
+  margin-bottom: 1em;
+}
+.detail__description{
+  grid-area: description_grid;
+  font-size:$fs-body;
+  color: gray;
+}
+
+@media  (max-width: 800px)  {
+  .wrapper_detail{
+    grid-template-areas: 'img_grid'
+                         'sold_quantity_grid'
+                         'title_grid'
+                         'amount_grid'
+                         'button_grid'
+                         'title2_grid'
+                         'description_grid'; 
+    grid-template-columns:1fr;
+    grid-template-rows: 0.5fr repeat(4, 0.2fr) 0.2fr 0.1fr 0.1fr;
+    
+  }
+  .detail__wrapper_image{
+    width: 40vw;
+    margin-bottom: 0;
+  }
+
+  }

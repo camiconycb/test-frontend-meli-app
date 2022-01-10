@@ -44,7 +44,9 @@ export const ItemsValue  = selector({
           price,
           item['picture'],
           item['condition'],
-          free_shipping
+          free_shipping,
+          0,
+          ""
         );
       });
       return resultItems;

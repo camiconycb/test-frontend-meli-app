@@ -8,6 +8,8 @@ export class ItemModel extends ItemEntity{
   picture: string;
   condition: string;
   free_shipping: Boolean;
+  sold_quantity: number;
+  description: string;
 
   constructor(
     id: string,
@@ -16,7 +18,7 @@ export class ItemModel extends ItemEntity{
     picture: string,
     condition: string,
     free_shipping: Boolean,
-    sold_quantity: Number,
+    sold_quantity: number,
     description: string
 
   ){
@@ -27,6 +29,8 @@ export class ItemModel extends ItemEntity{
       picture,
       condition,
       free_shipping,
+      sold_quantity,
+      description,
     );
     this.id = id;
     this.title = title;
@@ -34,18 +38,10 @@ export class ItemModel extends ItemEntity{
     this.picture = picture;
     this.condition = condition;
     this.free_shipping = free_shipping;
+    this.sold_quantity = sold_quantity;
+    this.description = description;
   }
 
  
 }
 
-// export const fromJson = ( parsedJson: any) => {
-//   return new ItemModel(
-//     parsedJson['id'],
-//     parsedJson['title'],
-//     parsedJson['price'],
-//     parsedJson['picture'],
-//     parsedJson['condition'],
-//     parsedJson['free_shipping'],
-//   )
-// }

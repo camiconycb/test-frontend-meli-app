@@ -19,7 +19,9 @@ function App() {
         <Router>
           <RecoilRoot>
             <Switch>
-              <Route  path='/'  element={ <Search/>}/>
+              <Route  path='/'  element={
+                  <Search/>
+              }/>
               <Route path='/items' element={ 
                 <div className='main'>
                   <Search/>
@@ -27,7 +29,12 @@ function App() {
                 </div>
               }/>
               <Route path= "*"element={<NoMatchPage/>} />
-              {/* <Route path='/items/:id' element={<Details/>}/> */}
+              <Route path='/items/:id' element={
+                <div className='main'>
+                  <Search/>
+                  <Details/>
+                </div>
+              }/>
             </Switch>
           </RecoilRoot>
         </Router>
