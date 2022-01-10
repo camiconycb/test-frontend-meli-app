@@ -18,10 +18,12 @@ const Input: FunctionComponent<IInputProps> = props => {
   return (
     <input 
       className='searchForm__input' 
-      type="text" 
-      placeholder='Nunca dejes de buscar' 
+      type="text"
+      placeholder='Nunca dejes de buscar'
+      data-testid="input-search" 
       onChange={(e) => {
         e.preventDefault();
+        console.log(e.target.value)
         setQuery(e.target.value);
       }}
       value={query}

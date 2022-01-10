@@ -45,9 +45,8 @@ const Result: FunctionComponent<IResultProps> = props => {
 
   const itemsValue: ItemEntity[] = useRecoilValue(ItemsValue);
   const categoriesValue: string = useRecoilValue(CategoriesValue);
-  console.log(itemsValue);
   
-  if(query == null) return <h3 className='message'>Ingrese parametro de busqueda</h3>
+  if(query == ':' || query == null) return <h3 className='message'>Ingrese parametro de busqueda</h3>
   if (!loading && itemsValue.length == 0) return  <h3  className='message'>No se encontraron resultados</h3>
   if(loading) {
     return  <>
@@ -61,30 +60,28 @@ const Result: FunctionComponent<IResultProps> = props => {
   return (
   
   <div>
+    <Helmet>
+      <title>{categoriesValue}  Mercado libre</title>
+      <meta name='description' content={`results for ${query}` }></meta>
+    </Helmet>
     <h2 className='container__breadcrumb'>{categoriesValue}</h2>
     <div className='main_container'>
       <ul  className='container__listItems'>
       {itemsValue.map((item) => {
-        console.log(item.id);
-        
-       return <>
-         <Helmet>
-          <title>{categoriesValue}  Mercado libre</title>
-          <meta name='description' content={`results for ${query}` }></meta>
-         </Helmet>
-         <Link to ={`/items/${item.id}`} className='link'>
-          <li key={item.id}>
-            <div className='listItems_picture'>
-              <img src={item.picture} alt={item.id + "thumbnail"} className='picture'></img>
-            </div>
-            <span className='price'> ${item.price.amount}</span>
-            <span className='title'>{item.title} </span>
-            <span className='currency'>{item.price.currency}</span>
-          </li>
+        return (
+          <Link to ={`/items/${item.id}`} className='link'>
+            <li key={item.id}>
+              <div className='listItems_picture'>
+                <img src={item.picture} alt={item.id + "thumbnail"} className='picture'></img>
+              </div>
+              <span className='price'> ${item.price.amount}</span>
+              <span className='title'>{item.title} </span>
+              <span className='currency'>{item.price.currency}</span>
+            </li>
 
-         </Link>
-         </>
-      })}
+          </Link>
+         )
+        })}
        
       </ul>
      
