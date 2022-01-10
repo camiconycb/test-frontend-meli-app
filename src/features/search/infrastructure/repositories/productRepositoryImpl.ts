@@ -12,7 +12,7 @@ export class ProductRepositoryImpl implements IProductRepository{
   }
 
   searchProduct(query: string): {}{
-    const baseURL = `http://localhost:4000/api/items/:${query}`;
+    const baseURL = `http://localhost:4000/api/items/?search=:${query}`;
     const response = axios.get(baseURL);
     
     return response;
