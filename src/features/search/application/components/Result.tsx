@@ -7,6 +7,7 @@ import { IProductRepository } from '../../domain/repositories/productRepository'
 import { CategoriesValue, ItemsValue, resultSearchState, ResultSearchValue } from '../state/searchProvider';
 import { ParamsSearchProduct, SearchProductUseCase } from '../usecases/searchProductUseCase';
 import './styles.scss';
+import {Helmet} from 'react-helmet';
 interface IResultProps {
 
 }
@@ -47,8 +48,16 @@ const Result: FunctionComponent<IResultProps> = props => {
   console.log(itemsValue);
   
   if(query == null) return <h3 className='message'>Ingrese parametro de busqueda</h3>
-  if (!loading && itemsValue.length == 0) return <h3  className='message'>No se encontraron resultados</h3>
-  if(loading) return <span className='message'>Cargando...</span>
+  if (!loading && itemsValue.length == 0) return  <h3  className='message'>No se encontraron resultados</h3>
+  if(loading) {
+    return  <>
+      <Helmet>
+        <title>Cargando...</title>
+      </Helmet>
+      <span className='message'>Cargando...</span>
+    </>
+  }
+ 
   return (
   
   <div>
@@ -58,7 +67,11 @@ const Result: FunctionComponent<IResultProps> = props => {
       {itemsValue.map((item) => {
         console.log(item.id);
         
-       return (
+       return <>
+         <Helmet>
+          <title>{categoriesValue}</title>
+          <meta name='description' content={`results for ${query}` }></meta>
+         </Helmet>
          <Link to ={`/items/${item.id}`} className='link'>
           <li key={item.id}>
             <div className='listItems_picture'>
@@ -70,8 +83,7 @@ const Result: FunctionComponent<IResultProps> = props => {
           </li>
 
          </Link>
-       )
-        
+         </>
       })}
        
       </ul>

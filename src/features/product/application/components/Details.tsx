@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import container from '../../../../injection_container';
@@ -44,8 +45,20 @@ const Details: FunctionComponent<IDetailsProps> = props => {
     getProduct();
   }, [id]);
 
-  if(loading) return <span className='message'>Cargando...</span>
-  return (
+ 
+  if(loading) {
+    return  <>
+      <Helmet>
+        <title>Cargando...</title>
+      </Helmet>
+      <span className='message'>Cargando...</span>
+    </>
+  }
+  return <>
+    <Helmet>
+      <title>{itemValue?.title}</title>
+      <meta name='description' content={`details of ${itemValue?.title}` }></meta>
+    </Helmet>
     <div>
       <h2 className='container__breadcrumb'>{categoriesItemValue}</h2>
       <div className='main_container'>
@@ -68,7 +81,8 @@ const Details: FunctionComponent<IDetailsProps> = props => {
         </div>
     </div>
     </div>
-  );
+  </>
+  
   
 }
 export default Details;

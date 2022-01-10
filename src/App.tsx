@@ -7,6 +7,7 @@ import {
   RecoilRoot } from 'recoil';
 import Result from './features/search/application/components/Result';
 import NoMatchPage from './features/noMatchPage';
+import { Helmet } from 'react-helmet';
 
 function App() {
   useEffect(() =>{
@@ -20,7 +21,15 @@ function App() {
           <RecoilRoot>
             <Switch>
               <Route  path='/'  element={
+                <div>
+                  <Helmet>
+                    <title>Mercado Libre</title>
+                    <meta name='description' content={`Mercado libre` }></meta>
+
+                  </Helmet>
                   <Search/>
+
+                </div>
               }/>
               <Route path='/items' element={ 
                 <div className='main'>
