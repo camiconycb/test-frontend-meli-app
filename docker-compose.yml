@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/test-frontend-meli-app
+    ports:
+      - 3000:3000
+    container_name: test-frontend-meli-app
+    command: ash -c "npm install && npm start"
